@@ -1,0 +1,26 @@
+version: '3'
+
+tasks:
+  migrate:
+    desc: "apply migrations"
+    cmds:
+      - go run cmd/migrator/main.go
+  run:
+    desc: "run server"
+    cmds:
+      - go run cmd/sso/main.go
+  composeup:
+    desc: "run docker compose"
+    cmds:
+      - docker-compose up -d
+  composedown:
+    desc: "stop docker compose"
+    cmds:
+      - docker-compose down
+  cleanrun:
+    desc: "rerun docker compose, apply migrations and run server"
+    cmds:
+      - docker-compose down
+      - docker-compose up -d
+      - go run cmd/migrator/main.go
+      - go run cmd/sso/main.go

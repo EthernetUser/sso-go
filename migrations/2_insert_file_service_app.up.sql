@@ -1,0 +1,1 @@
+INSERT INTO apps (name, secret) VALUES ('file-service', 'secret');
